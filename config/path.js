@@ -7,5 +7,10 @@ module.exports = {
         src: pathSrc + "/html/*.html",
         watch: pathSrc + "/html/**/*.html",
         dest: pathDest
+    },
+    js: {
+        src: pathSrc + "/js/*.js",
+        watch: pathSrc + "/js/**/*.js",
+        dest: pathDest + "/js"
     }
 }
