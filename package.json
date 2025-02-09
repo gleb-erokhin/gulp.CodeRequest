@@ -10,5 +10,13 @@
   "license": "ISC",
   "dependencies": {
     "gulp": "^5.0.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^3.0.3",
+    "gulp-file-include": "^2.3.0",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-notify": "^5.0.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-size": "^4.0.1"
   }
 }
