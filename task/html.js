@@ -10,6 +10,7 @@ const htmlmin = require('gulp-htmlmin');
 const size = require('gulp-size');
 const plumber = require('gulp-plumber');
 const notify = require('gulp-notify');
+const webphtml = require('gulp-webp-html-nosvg');
 
 //Обработка HTML
 const html = () => {
@@ -21,6 +22,7 @@ const html = () => {
             }))
         }))
         .pipe(fileInclude())
+        .pipe(webphtml())
         .pipe(size({ title: "до" }))
         .pipe(htmlmin(app.htmlmin))
         .pipe(size({ title: "после" }))

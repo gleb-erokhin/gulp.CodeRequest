@@ -8,6 +8,7 @@ const path = require('./config/path.js');
 const clear = require('./task/clear.js');
 const html = require('./task/html.js');
 const js = require('./task/js.js');
+const img = require('./task/img.js');
 
 // сервер, перезагрузка страницы
 const server = () => {
@@ -22,15 +23,17 @@ const server = () => {
 const watcher = () => {
     watch(path.html.watch, html).on('all', bSync.reload);
     watch(path.js.watch, js).on('all', bSync.reload);
+    watch(path.img.watch, img).on('all', bSync.reload);
 }
 
 exports.html = html;
 exports.js = js;
+exports.img = img;
 exports.watch = watcher;
 exports.clear = clear;
 
 exports.default = series(
     clear,
-    parallel(html, js),
+    parallel(html, js, img),
     parallel(watcher, server)
 );

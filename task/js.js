@@ -7,6 +7,8 @@ const app = require('../config/app.js');
 //Плагины
 const plumber = require('gulp-plumber');
 const notify = require('gulp-notify');
+const babel = require('gulp-babel');
+const webpack = require('webpack-stream');
 
 //Обработка JS
 const js = () => {
@@ -17,6 +19,8 @@ const js = () => {
                 message: error.message
             }))
         }))
+        .pipe(babel())
+        .pipe(webpack(app.webpack))
         .pipe(dest(path.js.dest, { sourcemaps: true }));
 }
 
