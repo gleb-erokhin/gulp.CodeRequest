@@ -2,16 +2,16 @@ const { watch, series, parallel } = require('gulp');
 const bSync = require('browser-sync').create();
 
 //Конфигурация, пути по умолчанию
-const path = require('./config/path.js');
-const app = require('./config/app.js');
+const path = require('./gulp-config/path.js');
+const app = require('./gulp-config/app.js');
 
 // Задачи, выведенные таски по каждому типу отдельно
-const clear = require('./task/clear.js');
-const html = require('./task/html.js');
-const js = require('./task/js.js');
-const img = require('./task/img.js');
-const font = require('./task/font.js');
-const scss = require('./task/scss.js');
+const clear = require('./gulp-task/clear.js');
+const html = require('./gulp-task/html.js');
+const js = require('./gulp-task/js.js');
+const img = require('./gulp-task/img.js');
+const font = require('./gulp-task/font.js');
+const scss = require('./gulp-task/scss.js');
 
 // сервер, перезагрузка страницы
 const server = () => {

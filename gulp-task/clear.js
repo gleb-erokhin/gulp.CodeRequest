@@ -1,7 +1,7 @@
 const del = require('del');
 
 //Конфигурация
-const path = require('../config/path.js');
+const path = require('../gulp-config/path.js');
 
 // очистка
 const clear = () => {

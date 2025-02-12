@@ -1,8 +1,8 @@
 const { src, dest } = require('gulp');
 
 //Конфигурация
-const path = require('../config/path.js');
-const app = require('../config/app.js');
+const path = require('../gulp-config/path.js');
+const app = require('../gulp-config/app.js');
 
 //Плагины
 const fileInclude = require('gulp-file-include');
