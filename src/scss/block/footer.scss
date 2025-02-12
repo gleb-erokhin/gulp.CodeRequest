@@ -1,0 +1,9 @@
+.footer {
+    background-color: blue;
+    color: white;
+
+        @include ph {
+        color: red;
+    }
+}
+

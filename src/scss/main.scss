@@ -1,0 +1,39 @@
+
+
+$base-font-size: 22px;
+
+@mixin ph {
+    @media (max-width: 700px) {
+        @content;
+    }
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-size: $base-font-size;
+    font-family: Arial, serif;
+    line-height: 1.5;
+
+    @include ph {
+        color: red;
+    }
+}
+
+h1 {
+    font-size: $base-font-size;
+    font-weight: 600;
+}
+
+.main {
+    background-image: url('../img/01-big.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+@import "block/footer.scss";
+@import "block/header.scss";

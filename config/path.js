@@ -22,5 +22,10 @@ module.exports = {
         src: pathSrc + "/font/*.{eot,ttf,otc,ttc,woff,woff2,svg}",
         watch: pathSrc + "/font/**/*.{eot,ttf,otc,ttc,woff,woff2,svg}",
         dest: pathDest + "/font"
+    },
+    scss: {
+        src: pathSrc + "/scss/*.scss",
+        watch: pathSrc + "/scss/**/*.scss",
+        dest: pathDest + "/css"
     }
 }
