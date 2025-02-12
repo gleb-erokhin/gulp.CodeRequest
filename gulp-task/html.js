@@ -12,10 +12,13 @@ import plumber from 'gulp-plumber';
 import notify from 'gulp-notify';
 import webphtml from 'gulp-webp-html-nosvg';
 import gulpIf from 'gulp-if';
+import replace from 'gulp-replace';
+import changed from 'gulp-changed';
 
 //Обработка HTML
 const html = () => {
     return gulp.src(path.html.src)
+        .pipe(changed(path.html.dest))
         .pipe(plumber({
             errorHandler: notify.onError(error => ({
                 title: 'HTML',
@@ -23,6 +26,11 @@ const html = () => {
             }))
         }))
         .pipe(fileInclude())
+        .pipe(
+            replace(
+                /(?<=src=|href=|srcset=)(['"])(\.(\.)?\/)*(img|images|fonts|css|scss|sass|js|files|audio|video)(\/[^\/'"]+(\/))?([^'"]*)\1/gi,
+                '$1./$4$5$7$1'
+            ))
         .pipe(webphtml())
         .pipe(size({ title: "до" }))
         .pipe(gulpIf(app.isProd, htmlmin(app.htmlmin)))
