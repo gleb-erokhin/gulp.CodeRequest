@@ -8,8 +8,8 @@ import app from'./gulp-config/app.js';
 // Задачи, выведенные таски по каждому типу отдельно
 import clear from'./gulp-task/clear.js';
 import html from'./gulp-task/html.js';
+import img from'./gulp-task/img.js';
 // import js from'./gulp-task/js.js';
-// import img from'./gulp-task/img.js';
 // import font from'./gulp-task/font.js';
 // import scss from'./gulp-task/scss.js';
 
@@ -25,15 +25,15 @@ const server = () => {
 // наблюдатель
 const watcher = () => {
     gulp.watch(path.html.watch, html).on('all', bSync.reload);
+    gulp.watch(path.img.watch, img).on('all', bSync.reload);
     // watch(path.js.watch, js).on('all', bSync.reload);
-    // watch(path.img.watch, img).on('all', bSync.reload);
     // watch(path.font.watch, font).on('all', bSync.reload);
     // watch(path.scss.watch, scss).on('all', bSync.reload);
 }
 
 const build = gulp.series (
     clear,
-    gulp.parallel(html)
+    gulp.parallel(html, img)
     // gulp.parallel(html, js, img, font, scss)
 );
 
@@ -44,9 +44,9 @@ const dev = gulp.series (
 
 // для експорта данных ES6 используем оператор export, задачу экспортируем как объект
 export { html };
+export { img };
 // exports.html = html;
 // exports.js = js;
-// exports.img = img;
 // exports.font = font;
 // exports.watch = watcher;
 // exports.clear = clear;

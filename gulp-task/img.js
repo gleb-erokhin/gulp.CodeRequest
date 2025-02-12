@@ -1,10 +1,17 @@
 import gulp from'gulp';
 
 //Конфигурация
+/**
+ * path - пути сохранения файлов
+ * app - конфигурации плагинов gulp
+ */
 import path from'../gulp-config/path.js';
 import app from'../gulp-config/app.js';
 
 //Плагины
+/**
+ * gulp-imagemin - 
+ */
 import plumber from'gulp-plumber';
 import notify from'gulp-notify';
 import imagemin from'gulp-imagemin';
