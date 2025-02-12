@@ -1,20 +1,20 @@
-const { src, dest } = require('gulp');
+import gulp from'gulp';
 
 //Конфигурация
-const path = require('../gulp-config/path.js');
-const app = require('../gulp-config/app.js');
+import path from'../gulp-config/path.js';
+import app from'../gulp-config/app.js';
 
 //Плагины
-const plumber = require('gulp-plumber');
-const notify = require('gulp-notify');
-const imagemin = require('gulp-imagemin');
-const newer = require('gulp-newer');
-const webp = require('gulp-webp');
-const gulpIf = require('gulp-if');
+import plumber from'gulp-plumber';
+import notify from'gulp-notify';
+import imagemin from'gulp-imagemin';
+import newer from'gulp-newer';
+import webp from'gulp-webp';
+import gulpIf from'gulp-if';
 
 //Обработка IMG
 const img = () => {
-    return src(path.img.src, {encoding: false})
+    return gulp.src(path.img.src, {encoding: false})
         .pipe(plumber({
             errorHandler: notify.onError(error => ({
                 title: 'IMAGE',
@@ -32,7 +32,7 @@ const img = () => {
         // сработает только при запуске таска в пежиме продакшина
         // .pipe(gulpIf(app.isProd, imagemin(app.imagemin)))
         .pipe(imagemin(app.imagemin))
-        .pipe(dest(path.img.dest))
+        .pipe(gulp.dest(path.img.dest))
 }
 
 module.exports = img;
