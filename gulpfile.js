@@ -1,17 +1,17 @@
-const { watch, series, parallel } = require('gulp');
-const bSync = require('browser-sync').create();
+import gulp from'gulp';
+import bSync from'browser-sync';
 
 //Конфигурация, пути по умолчанию
-const path = require('./gulp-config/path.js');
-const app = require('./gulp-config/app.js');
+import path from'./gulp-config/path.js';
+import app from'./gulp-config/app.js';
 
 // Задачи, выведенные таски по каждому типу отдельно
-const clear = require('./gulp-task/clear.js');
-const html = require('./gulp-task/html.js');
-const js = require('./gulp-task/js.js');
-const img = require('./gulp-task/img.js');
-const font = require('./gulp-task/font.js');
-const scss = require('./gulp-task/scss.js');
+import clear from'./gulp-task/clear.js';
+import html from'./gulp-task/html.js';
+// import js from'./gulp-task/js.js';
+// import img from'./gulp-task/img.js';
+// import font from'./gulp-task/font.js';
+// import scss from'./gulp-task/scss.js';
 
 // сервер, перезагрузка страницы
 const server = () => {
@@ -24,32 +24,36 @@ const server = () => {
 
 // наблюдатель
 const watcher = () => {
-    watch(path.html.watch, html).on('all', bSync.reload);
-    watch(path.js.watch, js).on('all', bSync.reload);
-    watch(path.img.watch, img).on('all', bSync.reload);
-    watch(path.font.watch, font).on('all', bSync.reload);
-    watch(path.scss.watch, scss).on('all', bSync.reload);
+    gulp.watch(path.html.watch, html).on('all', bSync.reload);
+    // watch(path.js.watch, js).on('all', bSync.reload);
+    // watch(path.img.watch, img).on('all', bSync.reload);
+    // watch(path.font.watch, font).on('all', bSync.reload);
+    // watch(path.scss.watch, scss).on('all', bSync.reload);
 }
 
-const build = series (
+const build = gulp.series (
     clear,
-    parallel(html, js, img, font, scss)
+    gulp.parallel(html)
+    // gulp.parallel(html, js, img, font, scss)
 );
 
-const dev = series (
+const dev = gulp.series (
     build,
-    parallel(watcher, server)
+    gulp.parallel(watcher, server)
 );
 
-exports.html = html;
-exports.js = js;
-exports.img = img;
-exports.font = font;
-exports.watch = watcher;
-exports.clear = clear;
-exports.scss = scss;
+// для експорта данных ES6 используем оператор export, задачу экспортируем как объект
+export { html };
+// exports.html = html;
+// exports.js = js;
+// exports.img = img;
+// exports.font = font;
+// exports.watch = watcher;
+// exports.clear = clear;
+// exports.scss = scss;
 
-exports.default = app.isProd
+// exports.default = app.isProd
+export default app.isProd
     ? build
     : dev;
 

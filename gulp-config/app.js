@@ -6,7 +6,7 @@
 const isProd = process.argv.includes('--production');
 const isDev = !isProd;
 
-module.exports = {
+export default {
     isProd: isProd,
     isDev: isDev,
 

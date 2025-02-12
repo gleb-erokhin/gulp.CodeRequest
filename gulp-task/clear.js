@@ -1,11 +1,12 @@
-const del = require('del');
+import del from 'del';
 
 //Конфигурация
-const path = require('../gulp-config/path.js');
+import path from '../gulp-config/path.js';
 
 // очистка
 const clear = () => {
     return del(path.root);
 }
 
-module.exports = clear;
+// module.exports = clear;
+export default clear;

@@ -1,20 +1,21 @@
-const { src, dest } = require('gulp');
+import gulp from 'gulp';
 
 //Конфигурация
-const path = require('../gulp-config/path.js');
-const app = require('../gulp-config/app.js');
+import path from '../gulp-config/path.js';
+import app from '../gulp-config/app.js';
 
 //Плагины
-const fileInclude = require('gulp-file-include');
-const htmlmin = require('gulp-htmlmin');
-const size = require('gulp-size');
-const plumber = require('gulp-plumber');
-const notify = require('gulp-notify');
-const webphtml = require('gulp-webp-html-nosvg');
+import fileInclude from 'gulp-file-include';
+import htmlmin from 'gulp-htmlmin';
+import size from 'gulp-size';
+import plumber from 'gulp-plumber';
+import notify from 'gulp-notify';
+import webphtml from 'gulp-webp-html-nosvg';
+import gulpIf from 'gulp-if';
 
 //Обработка HTML
 const html = () => {
-    return src(path.html.src)
+    return gulp.src(path.html.src)
         .pipe(plumber({
             errorHandler: notify.onError(error => ({
                 title: 'HTML',
@@ -24,9 +25,9 @@ const html = () => {
         .pipe(fileInclude())
         .pipe(webphtml())
         .pipe(size({ title: "до" }))
-        .pipe(htmlmin(app.htmlmin))
+        .pipe(gulpIf(app.isProd, htmlmin(app.htmlmin)))
         .pipe(size({ title: "после" }))
-        .pipe(dest(path.html.dest))
+        .pipe(gulp.dest(path.html.dest))
 }
 
-module.exports = html;
+export default html;

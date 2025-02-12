@@ -1,10 +1,10 @@
-const app = require('../gulp-config/app.js');
+import app from '../gulp-config/app.js';
 
 const pathSrc = "./src";
 // на основании типа запуска выбираем папку выгрузки для разработки и продакшина
 const pathDest = app.isProd ? "./docs" : "./public";
 
-module.exports = {
+export default {
     root: pathDest,
     html: {
         src: pathSrc + "/html/*.html",
