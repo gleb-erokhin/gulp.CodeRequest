@@ -1,17 +1,17 @@
-const { src, dest } = require('gulp');
+import gulp from'gulp';
 
 //Конфигурация
-const path = require('../gulp-config/path.js');
-const app = require('../gulp-config/app.js');
+import path from'../gulp-config/path.js';
+import app from'../gulp-config/app.js';
 
 //Плагины
-const plumber = require('gulp-plumber');
-const notify = require('gulp-notify');
-const sass = require('gulp-sass')(require('sass'));
-// const autoprefixer = require('gulp-autoprefixer');
-const webpCss = require('gulp-webp-css');
-const csso = require('gulp-csso');
-const gulpIf = require('gulp-if');
+import plumber from'gulp-plumber';
+import notify from'gulp-notify';
+import sass from'gulp-sass';
+import autoprefixer from'gulp-autoprefixer';
+import webpCss from'gulp-webp-css';
+import csso from'gulp-csso';
+import gulpIf from'gulp-if';
 
 //Обработка scss
 /**
