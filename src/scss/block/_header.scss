@@ -4,7 +4,11 @@
     background-color: blue;
     color: white;
 
-        @include ph {
+        @include desktop {
         color: red;
+    }
+    &__title {
+        font-size: 40px;
+        font-weight: 800;
     }
 }

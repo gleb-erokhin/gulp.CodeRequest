@@ -18,14 +18,14 @@ import changed from 'gulp-changed';
 //Обработка HTML
 const html = () => {
     return gulp.src(path.html.src)
-        .pipe(changed(path.html.dest))
+        // .pipe(changed(path.html.dest))
         .pipe(plumber({
             errorHandler: notify.onError(error => ({
                 title: 'HTML',
                 message: error.message
             }))
         }))
-        .pipe(fileInclude())
+        .pipe(fileInclude(app.fileIncludeConfig))
         .pipe(
             replace(
                 /(?<=src=|href=|srcset=)(['"])(\.(\.)?\/)*(img|images|fonts|css|scss|sass|js|files|audio|video)(\/[^\/'"]+(\/))?([^'"]*)\1/gi,

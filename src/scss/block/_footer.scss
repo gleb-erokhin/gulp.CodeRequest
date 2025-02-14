@@ -2,8 +2,11 @@
     background-color: blue;
     color: white;
 
-        @include ph {
+    @include desktop {
         color: red;
     }
-}
 
+    & p {
+        color: aquamarine;
+    }
+}

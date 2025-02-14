@@ -23,8 +23,16 @@ export default {
     imagemin: {
         verbose: true
     },
+    fileIncludeConfig : {
+        prefix: '@@',
+        basepath: '@file'
+    },
 
     fonter: {
         formats: ["ttf", "woff", "eot", "svg"]
+    },
+    startServerConfig: {
+        livereload: true,
+        open: true
     }
 }
