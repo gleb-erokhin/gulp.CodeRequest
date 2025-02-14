@@ -33,39 +33,39 @@ import sassGlob from'gulp-sass-glob';
  * app.isProd - будет работать только в запуске режима продакшина
  */
 const scss = () => {
-    return gulp.src(path.scss.src, { sourcemaps: !app.isProd })
+    return gulp.src(path.scss.src)
         .pipe(plumber({
             errorHandler: notify.onError(error => ({
                 title: 'SCSS',
                 message: error.message
             }))
         }))
-        // .pipe(sourceMaps.init())
-        // .pipe(sassGlob())
-        .pipe(sass())
-        .pipe(
-            replace(
-                /(['"]?)(\.\.\/)+(img|images|fonts|css|scss|sass|js|files|audio|video)(\/[^\/'"]+(\/))?([^'"]*)\1/gi,
-                '$1$2$3$4$6$1'
-            )
-        )
-        .pipe(groupMediaQueries())
-        .pipe(webpCss())
-        // .pipe(gulpIf(app.isProd, autoprefixer()))
-        // .pipe(shorthand())
-        // .pipe(size({title: "main.css"}))
-        // .pipe(gulp.dest(path.scss.dest, { sourcemaps: !app.isProd }))
-        // .pipe(gulpIf(app.isProd, rename({suffix: ".min"})))
-        // .pipe(gulpIf(app.isProd, csso()))
+        .pipe(sourceMaps.init())
         .pipe(autoprefixer())
-        .pipe(shorthand())
+        .pipe(sassGlob())
+        .pipe(gulpIf(app.isProd, groupMediaQueries()))
+        .pipe(sass())
+        .pipe(webpCss())
+        .pipe(sourceMaps.write())
         .pipe(size({title: "main.css"}))
-        .pipe(gulp.dest(path.scss.dest, { sourcemaps: !app.isProd }))
-        .pipe(rename({suffix: ".min"}))
+        .pipe(gulp.dest(path.scss.dest))
         .pipe(csso())
+        .pipe(rename({suffix: ".min"}))
         .pipe(size({title: "main.min.css"}))
-        // .pipe(sourceMaps.write())
-        .pipe(gulp.dest(path.scss.dest, { sourcemaps: !app.isProd }))
+        .pipe(gulp.dest(path.scss.dest))
+        // .pipe(shorthand())
+
+        
+        // .pipe(
+        //     replace(
+        //         /(['"]?)(\.\.\/)+(img|images|fonts|css|scss|sass|js|files|audio|video)(\/[^\/'"]+(\/))?([^'"]*)\1/gi,
+        //         '$1$2$3$4$6$1'
+        //     )
+        // )
+        // .pipe(size({title: "main.css"}))
+        // .pipe(gulp.dest(path.scss.dest))
+        // .pipe(rename({suffix: ".min"}))
+        // .pipe(csso())
         // .pipe(gulp.dest(path.scss.dest, { sourcemaps: !app.isProd }))
 }
 

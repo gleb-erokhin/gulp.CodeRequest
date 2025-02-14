@@ -2,7 +2,9 @@
     display: flex;
     flex-direction: column;
     background-color: blue;
-    color: white;
+    color: blueviolet;
+    font-size: 35px;
+    padding: 10px;
 
         @include desktop {
         color: red;
