@@ -13,7 +13,7 @@ import notify from 'gulp-notify';
 import webphtml from 'gulp-webp-html-nosvg';
 import gulpIf from 'gulp-if';
 import replace from 'gulp-replace';
-import changed from 'gulp-changed';
+import formatHtml from 'gulp-format-html';
 
 //Обработка HTML
 const html = () => {
@@ -32,6 +32,7 @@ const html = () => {
                 '$1./$4$5$7$1'
             ))
         .pipe(webphtml())
+        .pipe(formatHtml())
         .pipe(size({ title: "до" }))
         .pipe(gulpIf(app.isProd, htmlmin(app.htmlmin)))
         .pipe(size({ title: "после" }))
