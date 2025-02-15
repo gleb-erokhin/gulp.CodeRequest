@@ -23,6 +23,7 @@ export default {
     imagemin: {
         verbose: true
     },
+    
     fileIncludeConfig : {
         prefix: '@@',
         basepath: '@file'
