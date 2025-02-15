@@ -41,10 +41,9 @@ const scss = () => {
             }))
         }))
         .pipe(sourceMaps.init())
-        .pipe(autoprefixer())
         .pipe(sassGlob())
-        .pipe(gulpIf(app.isProd, groupMediaQueries()))
         .pipe(sass())
+        .pipe(autoprefixer())
         .pipe(webpCss())
         .pipe(
             replace(
@@ -59,15 +58,6 @@ const scss = () => {
         .pipe(rename({ suffix: ".min" }))
         .pipe(size({ title: "main.min.css" }))
         .pipe(gulp.dest(path.scss.dest))
-    // .pipe(shorthand())
-
-
-
-    // .pipe(size({title: "main.css"}))
-    // .pipe(gulp.dest(path.scss.dest))
-    // .pipe(rename({suffix: ".min"}))
-    // .pipe(csso())
-    // .pipe(gulp.dest(path.scss.dest, { sourcemaps: !app.isProd }))
 }
 
 export default scss;
