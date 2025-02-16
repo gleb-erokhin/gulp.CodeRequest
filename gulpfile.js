@@ -12,7 +12,7 @@ import html from './gulp-task/html.js';
 import img from './gulp-task/img.js';
 import scss from './gulp-task/scss.js';
 import js from'./gulp-task/js.js';
-// import font from'./gulp-task/font.js';
+import font from'./gulp-task/font.js';
 
 // сервер, перезагрузка страницы
 const server = () => {
@@ -33,12 +33,13 @@ const watcher = () => {
     gulp.watch(path.img.watch, img);
     gulp.watch(path.scss.watch, scss);
     gulp.watch(path.js.watch, js);
+    watch(path.font.watch, font);
     // watch(path.font.watch, font).on('all', bSync.reload);
 }
 
 const build = gulp.series(
     clear,
-    gulp.parallel(html, img, scss, js)
+    gulp.parallel(html, img, scss, js, font)
     // gulp.parallel(html, js, img, font, scss)
 );
 
@@ -52,9 +53,9 @@ export { html };
 export { img };
 export { scss };
 export { js };
+export { font };
 
 // exports.html = html;
-// exports.font = font;
 // exports.watch = watcher;
 // exports.clear = clear;
 
