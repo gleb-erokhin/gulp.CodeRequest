@@ -1,16 +1,16 @@
 .header {
-    display: flex;
-    flex-direction: column;
-    background-color: blue;
-    color: blueviolet;
-    font-size: 35px;
-    padding: 10px;
+	background-color: #c0e4f4;
+	padding: 50px 0;
 
-        @include desktop {
-        color: red;
-    }
-    &__title {
-        font-size: 40px;
-        font-weight: 800;
-    }
+	&__row {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+}
+
+.header__nav {
+	@include tablet {
+		display: none;
+	}
 }

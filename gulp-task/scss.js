@@ -41,8 +41,8 @@ const scss = () => {
         .pipe(sourceMaps.init())
         .pipe(sassGlob())
         .pipe(sass())
-        .pipe(autoprefixer())
         .pipe(webpCss())
+        .pipe(autoprefixer())
         .pipe(
             replace(
                 /(['"]?)(\.\.\/)+(img|images|fonts|css|scss|sass|js|files|audio|video)(\/[^\/'"]+(\/))?([^'"]*)\1/gi,
