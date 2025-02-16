@@ -13,7 +13,7 @@ import ttf2woff2 from 'gulp-ttf2woff2';
 
 //Обработка FONT
 const font = () => {
-    return gulp.src(path.font.src)
+    return gulp.src(path.font.src, app.fonterConfig)
         .pipe(plumber({
             errorHandler: notify.onError(error => ({
                 title: 'FONT',
@@ -23,6 +23,7 @@ const font = () => {
         .pipe(newer(path.font.dest))
         .pipe(fonter(app.fonter))
         .pipe(gulp.dest(path.font.dest))
+        // конвертация шрифтов в формат woff2
         .pipe(ttf2woff2())
         .pipe(gulp.dest(path.font.dest))
 }

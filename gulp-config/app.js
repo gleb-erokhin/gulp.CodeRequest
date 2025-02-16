@@ -32,6 +32,12 @@ export default {
     fonter: {
         formats: ["ttf", "woff", "eot", "svg"]
     },
+
+    fonterConfig: {
+        encoding: false, // Important!
+        removeBOM: false,
+    },
+    
     startServerConfig: {
         livereload: true,
         open: true

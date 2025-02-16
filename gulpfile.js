@@ -33,7 +33,7 @@ const watcher = () => {
     gulp.watch(path.img.watch, img);
     gulp.watch(path.scss.watch, scss);
     gulp.watch(path.js.watch, js);
-    watch(path.font.watch, font);
+    gulp.watch(path.font.watch, font);
     // watch(path.font.watch, font).on('all', bSync.reload);
 }
 
