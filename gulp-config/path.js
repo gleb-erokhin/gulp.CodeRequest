@@ -16,6 +16,16 @@ export default {
         watch: pathSrc + "/js/**/*.js",
         dest: pathDest + "/js"
     },
+    libs: {
+        src: pathSrc + "/libs/**/*.js",
+        watch: pathSrc + "/libs/**/*.js",
+        dest: pathDest + "/libs"
+    },
+    libsCss: {
+        src: pathSrc + "/libs/**/*.css",
+        watch: pathSrc + "/libs/**/*.css",
+        dest: pathDest + "/css"
+    },
     img: {
         src: pathSrc + "/img/*.{png,jpg,jpeg,gif,svg}",
         watch: pathSrc + "/img/**/*.{png,jpg,jpeg,gif,svg}",

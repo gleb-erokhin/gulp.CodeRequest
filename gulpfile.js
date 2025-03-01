@@ -13,6 +13,8 @@ import img from './gulp-task/img.js';
 import scss from './gulp-task/scss.js';
 import js from'./gulp-task/js.js';
 import font from'./gulp-task/font.js';
+import libs from './gulp-task/libs.js';
+import libsCss from './gulp-task/libsCss.js';
 
 // сервер, перезагрузка страницы
 const server = () => {
@@ -34,12 +36,14 @@ const watcher = () => {
     gulp.watch(path.scss.watch, scss);
     gulp.watch(path.js.watch, js);
     gulp.watch(path.font.watch, font);
+    gulp.watch(path.libs.watch, libs);
+    gulp.watch(path.libsCss.watch, libsCss);
     // watch(path.font.watch, font).on('all', bSync.reload);
 }
 
 const build = gulp.series(
     clear,
-    gulp.parallel(html, img, scss, js, font)
+    gulp.parallel(html, img, scss, js, font, libs, libsCss)
     // gulp.parallel(html, js, img, font, scss)
 );
 
@@ -54,6 +58,8 @@ export { img };
 export { scss };
 export { js };
 export { font };
+export { libs };
+export { libsCss };
 
 // exports.html = html;
 // exports.watch = watcher;
