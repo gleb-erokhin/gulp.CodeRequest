@@ -21,8 +21,10 @@ const font = () => {
             }))
         }))
         .pipe(newer(path.font.dest))
-        .pipe(fonter(app.fonter))
-        .pipe(gulp.dest(path.font.dest))
+
+        // .pipe(fonter(app.fonter))
+        // .pipe(gulp.dest(path.font.dest))
+        
         // конвертация шрифтов в формат woff2
         .pipe(ttf2woff2())
         .pipe(gulp.dest(path.font.dest))
