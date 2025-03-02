@@ -19,9 +19,7 @@
 	height: calc(var(--line-height) * 3 + var(--spacing) * 2);
 	width: var(--width);
 
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	@include df-jc-ac(center);
 }
 
 .nav-icon {
@@ -81,5 +79,5 @@
 /* Layout */
 
 .mobile-nav-btn {
-	z-index: 999;
+	z-index: 10;
 }

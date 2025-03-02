@@ -3,9 +3,7 @@
 	padding: 50px 0;
 
 	&__row {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
+		@include df-jc-ac(space-between)
 	}
 }
 
