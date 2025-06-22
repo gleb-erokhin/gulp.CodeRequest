@@ -1,34 +1,65 @@
-@mixin mediaBg() {
-	@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-		@content;
-	}
+// принимает на вход максимальный и минимальный размер шрифта, дополнительно указываем значения по умолчанию. Позволяет указывать динамический размер шрифта, указав только два значения
+@mixin fluid-text($max: 48, $min: 16) {
+    font-size: clamp(#{$min}px, #{$max / 1240 * 100}vw, #{$max}px);
 }
 
-@mixin desktop() {
-	@media (max-width: 1199px) {
-		@content;
-	}
+// сбрасывает свойства сылок, наследование цвета и сброс подчеркивания для обычного состояни и во время наведения
+@mixin reset-link {
+    color: inherit;
+
+    &,
+    &:hover {
+        text-decoration: none;
+    }
 }
 
-@mixin tablet() {
-	@media (max-width: 991px) {
-		@content;
-	}
+// сброс дефолтных стилей кнопки
+@mixin reset-button {
+    padding: 0;
+    background-color: transparent;
+    border: none;
 }
 
-@mixin small() {
-	@media (max-width: 767px) {
-		@content;
-	}
+// для центрирования элементов. Принимает булевые значения.
+@mixin flex-center($isInLine: false) {
+    @if $isInLine {
+        display: inline-flex;
+    }
+    @else {
+        display: flex;
+    }
+
+    justify-content: center;
+    align-items: center;
 }
 
-@mixin mobile() {
-	@media (max-width: 576px) {
-		@content;
-	}
+@mixin abs-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
 }
 
-// Миксины для позиционирования флекс бокса
+// задает размеры с пропорциями 1 к 1
+@mixin square($size) {
+    width: $size;
+    aspect-ratio: 1;
+}
+
+@mixin visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: -1px !important;
+    border: 0 !important;
+    padding: 0 !important;
+    white-space: nowrap !important;
+    clip-path: inset(100%) !important;
+    clip: rect(0 0 0 0) !important;
+    overflow: hidden !important;
+}
+
+//Миксины для позиционирования флекс бокса
 @mixin df-jc-ac($position) {
 	display: flex;
 	justify-content: $position;

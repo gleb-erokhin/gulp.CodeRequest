@@ -19,7 +19,7 @@
 	height: calc(var(--line-height) * 3 + var(--spacing) * 2);
 	width: var(--width);
 
-	@include df-jc-ac(center);
+	@include flex-center;
 }
 
 .nav-icon {

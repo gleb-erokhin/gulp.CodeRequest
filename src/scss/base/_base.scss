@@ -3,29 +3,64 @@ html {
 }
 
 body {
-	background-color: var(--page-bg);
-	color: var(--text-color);
+	background-color: var(--color-light);
+	color: var(--color-dark);
 	font-family: var(--font-main);
-	background-image: url('../../img/01-big.jpg');
+	background: url('../../img/01-big.jpg') center/contain no-repeat;
+}
+
+// добавляем плавность свойств для работы с элементами
+a,
+button,
+input,
+textarea,
+svg * {
+    transition-duration: var(--transition-duration);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 img {
 	display: block;
 }
 
-a {
-	color: var(--link-color);
+h1,
+h2,
+h3,
+h4 {
+    font-weight: 500;
+}
+
+// определяем размеры текста в зависимости от макета и адаптивности, правило в mixin.scss
+h1,
+.h1 {
+    @include fluid-text(60, 43);
+}
+h2,
+.h2 {
+    @include fluid-text(40, 36);
+}
+h3,
+.h3 {
+    @include fluid-text(30, 26);
+}
+h4,
+.h4 {
+    @include fluid-text(20, 18);
 }
 
 code {
-	background-color: #e9f1f6;
+	background-color: var(--color-light);
 	padding: 0.2rem;
 	border-radius: 4px;
 }
 
 pre.code {
 	overflow-x: auto;
-	background-color: #e9f1f6;
+	background-color: var(--color-light);
 	padding: 1rem;
 	border-radius: 4px;
 }

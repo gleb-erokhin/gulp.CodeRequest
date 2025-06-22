@@ -1,9 +1,9 @@
 .header {
-	background-color: #c0e4f4;
+	background-color: var(--color-light-alt);
 	padding: 50px 0;
 
 	&__row {
-		@include df-jc-ac(space-between)
+		@include df-jc-ac(space-between);
 	}
 }
 
